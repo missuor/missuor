@@ -1,0 +1,80 @@
+{% extends "common/site_base.html" %}
+{% load i18n %}
+{% load static %}
+{% load customtrans %}
+{% block title %}Missuor | {{ o }}{% endblock %}
+
+{% block style %}
+<link href="{% static 'plugin/bootstrap/3.3.4/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/header.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/base.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/footer.css' %}" rel="stylesheet">
+<link href="{% static 'blog/css/style.css' %}" rel="stylesheet">
+<link href="{% static 'plugin/highlight/css/sunburst.css' %}" rel="stylesheet">
+
+<script src="{% static 'plugin/jquery/1.11.3/jquery.js' %}"></script>
+<script src="{% static 'plugin/bootstrap/3.3.4/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'common/js/marked.js' %}"></script>
+<script src="{% static 'plugin/highlight/highlight.pack.js' %}"></script>
+<script src="{% static 'plugin/highlight/js/config.js' %}"></script>
+{% endblock %}
+
+{% block header %}
+  {% include "common/header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="blog-heading">
+        <div class="blog-title">
+          <b>{{o.title }}</b>
+        </div>
+        <div class="blog-info text-grey">
+          <span> {{ o.create_time|date:"Y-m-d" }} </span>
+          <span> 阅读({{ o.readnum }}) </span>
+          <!--
+          {% if user == o.owner %}
+            <span><a rel="nofollow" class="pull-right" href="{% url 'blog:edit' o.pk %}"> 编辑 </a></span>
+            <span><a rel="nofollow" class="pull-right" href="{% url 'blog:delete' o.pk %}"> 删除 </a></span>
+          {% endif %}
+          -->
+        </div>
+      </div>
+    </div>
+    <div class="panel-body">
+      {% if o.cover %}
+      <div class="inpage-cover">
+        <img src="{{ o.cover|stringformat:'s!cover'|u }}" />
+      </div>
+      {% endif %}
+      <div class="blog-content">
+        <pre data-provider="marked-run" class="hidden"
+          style="display: none;">{{ o.content|safe }}
+        </pre>
+      </div>
+      <script>
+        $(document).ready(function(){
+          $('pre[data-provider="marked-run"]').each(function (e) {
+            var text = $(this).html(), div = $(this).parent();
+            $(this).remove();
+            div.html(marked(text));
+          });
+        });
+      </script>
+    </div>
+    <div id="comments" class="panel-footer">
+      <hr></hr>
+      {% include "blog/comment.html" %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block footer %}
+<div>
+  {% include "common/footer.html" %}
+</div>
+{% endblock %}

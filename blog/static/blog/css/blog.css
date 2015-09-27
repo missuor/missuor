@@ -1,0 +1,261 @@
+@charset "utf-8";
+* {margin: 0;padding: 0;}
+html {height: 100%;}
+body {
+    /* background: url("http://www.ireadhome.com/Content/Images/Index/background_image_01.png") repeat; */
+    height: 100%;
+    background: #eee;
+    min-height:100%;
+}
+
+    .post-item-home {
+        margin: 20px 5px 50px;
+        padding:5px 20px 10px;
+    }
+    .post-item{
+        margin: 20px 5px 2px;
+        padding:1px 20px 25px;
+        min-height: 120px;
+        _height: 10px;
+        /* Border */
+        background: #fff;
+        border-radius: 7px;
+        box-shadow: 1px 1px 2px #A7A8AD;
+        color: #666666;
+        display: block;
+    }
+        .post-item-title,
+        .post-item-title-home {
+            color: #fff;
+            margin: 0 auto 5px;
+            padding: 5px;
+            display: block;
+            /* border-bottom: 1px dashed #ccc; */
+        }
+        .post-item-title-home {
+            margin-bottom: 35px;
+        }
+            .post-item-title a:link,
+            .post-item-title a:visited,
+            .post-item-title a:active {
+                color: #390;
+                transition:all 0.4s linear 0s;
+                text-decoration: none;
+            }
+            .post-item-title a:hover {
+                color: #F60;
+                text-decoration: none;
+                margin-left: 10px;
+            }
+            .post-item-title a:hover {
+                color: #F60;
+                text-decoration: none;
+                margin-left: 10px;
+            }
+            .post-item-title-home a {
+                color: #000;
+                transition:all 0.4s linear 0s;
+                text-decoration: none;
+            }
+            .post-item-title-home a:hover {
+                color: #F60;
+                margin-left: 3px;
+            }
+
+        .post-item-info,
+        .post-item-stars {
+            margin: 0 auto 25px;
+            padding: 5px;
+            display: block;
+            width: 100%;
+            color: #999;
+        }
+            .post-item-info li {
+                min-width: 6em;
+
+            }
+            .post-item-info li,
+            .post-item-stars li {
+                float: left;
+                display: block;
+                padding: 3px;
+                margin-right: 15px;
+            }
+            .post-item-tags a,
+            .post-item-tags a:link,
+            .post-item-tags a:hover,
+            .post-item-tags a:active,
+            .post-item-tags a:visited{
+                color: #999;
+                text-decoration: none;
+            }
+            .post-item-tags a:hover{
+                color: #6c9;
+            }
+        .post-item-abstract {
+            width: 100%;
+            clear:both;
+            line-height: 1.5em;
+        }
+
+
+.syntaxhighlighter {
+    background: #1b2426;
+    padding:5px; /* 修复代码域出现滚动条的问题 */
+}
+
+
+.day {
+	min-height: 10px;
+	_height: 10px;
+    /* 下面的部分是加上边框 */
+	background: #fff;
+    border-radius: 7px;
+    box-shadow: 1px 1px 2px #A7A8AD;
+
+    color: #666666;
+    margin: 20px 5px 5px 2px;
+    padding:5px 20px 10px 20px;
+    display: block;
+}
+.dayTitle {
+	width: 100%;
+	color: #666;
+	line-height:2.2em;
+	font-size:22px;
+	clear:both;
+	border-bottom:1px solid #ccc;
+	text-align:left;
+    display: none;
+}
+
+.p-time {
+    background: url(images/spriteme2.png) no-repeat right bottom;
+    background-position: -1507px 72px;
+    position: absolute;
+    left: -70px;
+    top: 5px;
+    width: 50px;
+    padding-bottom: 10px;
+}
+
+.postTitle {
+	font-size: 110%;
+	font-weight: bold;
+	border-bottom: 1px dashed #ccc;
+	float: right;
+	line-height:2.5em;
+    font-size: 18px;
+	width: 100%;
+	clear:both;
+}
+.postTitle a:link, .postTitle a:visited, .postTitle a:active {
+	color: #390;transition:all 0.4s linear 0s
+}
+.postTitle a:hover {
+	color: #F60;
+	text-decoration: none;margin-left: 10px;
+}
+.postCon {
+	float: right;
+	line-height: 1.5;
+	width: 100%;
+	clear:both;
+	padding: 10px 0;
+}
+.postDesc {
+	float: right;
+	width: 100%;
+	clear:both;
+	text-align: right;
+	padding-right: 5px;
+	color: #A8B1BA;line-height: 2.5em;
+}
+.postDesc a:link, .postDesc a:visited, .postDesc a:active {
+	color: #666;
+}
+.postDesc a:hover {
+	color: #F60;
+	text-decoration: none;
+}
+.postSeparator {
+	clear: both;
+	height: 1px;
+	border-top: 1px dotted #666;
+	width: 100%;
+	clear:both;
+	float: right;
+	margin: 0 auto 15px auto;
+}
+.clear{
+    clear: both;
+}
+.desc_img{
+    float: right;
+    background: none;
+
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+
+}
+
+
+/* New */
+.no-resize {
+    resize: none;
+
+}
+
+.panel-footer {
+  min-height: 57px;
+  padding-bottom: 10px;
+}
+
+
+
+
+
+.blogs-container .btn-group-vertical>.btn-group:after, 
+.blogs-container .btn-group-vertical>.btn-group:before, 
+.blogs-container .btn-toolbar:after, .btn-toolbar:before, 
+.blogs-container .clearfix:after, 
+.blogs-container .clearfix:before, 
+.blogs-container .container-fluid:after, 
+.blogs-container .container-fluid:before, 
+.blogs-container .container:after, 
+.blogs-container .container:before, 
+.blogs-container .dl-horizontal dd:after, 
+.blogs-container .dl-horizontal dd:before, 
+.blogs-container .form-horizontal 
+.blogs-container .form-group:after, 
+.blogs-container .form-horizontal 
+.blogs-container .form-group:before, 
+.blogs-container .modal-footer:after, 
+.blogs-container .modal-footer:before, 
+.blogs-container .nav:after, 
+.blogs-container .nav:before, 
+.blogs-container .navbar-collapse:after, 
+.blogs-container .navbar-collapse:before, 
+.blogs-container .navbar-header:after, 
+.blogs-container .navbar-header:before, 
+.blogs-container .navbar:after, 
+.blogs-container .navbar:before, 
+.blogs-container .pager:after, 
+.blogs-container .pager:before, 
+.blogs-container .panel-body:after, 
+.blogs-container .panel-body:before, 
+.blogs-container .row:after, 
+.blogs-container .row:before {
+    display: block;
+    /* content: " "; */
+}
+
+
+section.blogs-container:before {
+    display: block;
+    /* content: " "; */
+}
+
+
+

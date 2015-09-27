@@ -1,0 +1,139 @@
+{% extends "common/site_base.html" %}
+{% load i18n %}
+{% load static %}
+{% load customtrans %}
+{% block title %} 首页 | Missuor {% endblock %}
+
+{% block style %}
+<link href="{% static 'plugin/bootstrap/3.3.4/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/header.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/base.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/footer.css' %}" rel="stylesheet">
+<link href="{% static 'blog/css/style.css' %}" rel="stylesheet">
+
+<script src="{% static 'plugin/jquery/1.11.3/jquery.js' %}"></script>
+<script src="{% static 'plugin/bootstrap/3.3.4/js/bootstrap.min.js' %}"></script>
+{% endblock %}
+
+{% block header %}
+  {% include "common/header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="container clearfix">
+<div id="blogs-container">
+  {% if records %}
+  <div id="only-title" class="only-title" onclick="setOnlyTitle()">
+    <div>
+      <div class="triangle"></div>
+      <i class="glyphicon glyphicon-list"></i>
+    </div>
+  </div>
+  {% endif %}
+  {% for o in records %}
+  <section class="blog-container clearfix">
+    <div class="timeline-box">
+      <div class="timeline">
+        <div class="category">
+          <a href="#" class="avatar-circle">
+          {% if o.cover %}
+          <img src="{{ o.cover|stringformat:'s!avatar'|u }}" />
+          {% else %}
+          <i class="glyphicon glyphicon-picture"></i>
+          {% endif %}
+          </a>
+        </div>
+        <div class="time">
+          {{ o.create_time|date:"Nj日" }}
+        </div>
+        <div class="author">
+          <a href="#">{{ o.owner|default_if_none:'Someone' }}</a>
+        </div>
+      </div>
+    </div>
+    <div class="blog-box">
+      <div class="blog-detail">
+        <div class="title">
+          <a href="{% url 'blog:detail' o.url %}">{{ o.title }}</a>
+        </div>
+        {% if o.cover %}
+        <div class="cover">
+          <img src="{{ o.cover|stringformat:'s!cover'|u }}" />
+        </div>
+        {% endif %}
+        <div class="content mui-ellipsis-3">
+          {{ o.excerpt }}
+        </div>
+        <div class="stat">
+          <span>
+            <a href="{% url 'blog:detail' o.url %}">
+              <i class="glyphicon glyphicon-eye-open"></i>
+              {{ o.readnum }}
+            </a>
+          </span>
+          <span>
+            <a href="{% url 'blog:detail' o.url %}#comments">
+              <i class="glyphicon glyphicon-comment"></i>
+              {{ o.commentnum }}
+            </a>
+          </span>
+          {% if user == o.owner %}
+          <span>
+            <a href="{% url 'blog:edit' o.pk %}">
+              <i class="glyphicon glyphicon-edit"></i>
+
+            </a>
+          </span>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endfor %}
+  
+  <section class="load-more-container clearfix">
+    {% if records %}
+    <div class="load-more load-more-animate" onclick="loadMore()">
+        More
+    </div>
+    {% else %}
+    <a class="load-more load-more-animate" href="{% url 'blog:add' %}">New</a>
+    {% endif %}
+  </section>
+</div>
+</div>
+
+<script>
+  var next_page = 2;
+  var loading = false;
+  function loadMore() {
+      var loading = true;
+      $(".load-more").html("Loading");
+      jQuery.ajax({
+          url: "/blog/more",
+          data: {
+              p: next_page,
+              s: 5,
+              category: ''
+          },
+          success: function (html) {
+              if (loading) {
+                  $(".load-more").html("More");
+                  if (!html || html.trim().length <= 0) {
+                      $(".load-more").removeClass("load-more-animate").html("End");
+                  } else {
+                      $(html).insertAfter($('#blogs-container .blog-container').last());
+                      next_page = next_page + 1;
+                  }
+                  loading = false;
+              }
+          }
+      });
+  }
+</script>
+{% endblock %}
+
+{% block footer %}
+  {% include "common/footer.html" %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "common/site_base.html" %}
+{% load i18n %}
+{% load customtrans %}
+{% load static %}
+{% block title %}首页 | Missuor{% endblock %}
+
+{% block style %}
+<link href="{% static 'plugin/bootstrap/3.3.4/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/header.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/base.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/footer.css' %}" rel="stylesheet">
+<link href="{% static 'blog/css/style.css' %}" rel="stylesheet">
+<script src="{% static 'plugin/jquery/1.11.3/jquery.js' %}"></script>
+<script src="{% static 'plugin/bootstrap/3.3.4/js/bootstrap.min.js' %}"></script>
+{% endblock %}
+
+{% block header %}
+  {% include "common/header.html" %}
+{% endblock %}
+
+{% block content %}
+<ul class="nav nav-pills">
+{% for o in records %}
+ <li>
+    <a href="{{ o.flag }}/">
+       <span class="badge pull-right">{{ o.article_set.count }}</span>
+       {{ o.flag }}
+    </a>
+ </li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,198 @@
+.md-editor {
+    font-family: "Helvetica Neue", Helvetica, Arial, "Hiragino Sans GB", "Hiragino Sans GB W3", "Microsoft YaHei UI", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    display: block;
+    outline: none;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+}
+
+.md-editor .md-footer,.md-editor>.md-header {
+    display: block;
+    padding: 6px 4px;
+    background: #f5f5f5
+}
+
+.md-editor>.md-header {
+    margin: 0
+}
+
+/* .md-editor>.md-preview {
+    background: #fff;
+    border-top: 1px dashed #ddd;
+    border-bottom: 1px dashed #ddd;
+    min-height: 10px;
+    overflow: auto
+} */
+
+.md-editor>textarea {
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    font-size: 14px;
+    outline: 0;
+    display: block;
+    margin: 0 !important;
+    padding: 10px !important;
+    width: 100%;
+    border: 0;
+    border-top: 1px dashed #ddd;
+    border-radius: 0;
+    box-shadow: none;
+    background: #eee
+}
+
+.md-editor>textarea:focus {
+    box-shadow: none;
+    background: #fff
+}
+
+.md-editor.active {
+    /* border-color: #66afe9; */
+    outline: 0;
+    /* -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6); */
+    /* box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6) */
+}
+
+.md-editor .md-controls {
+    float: right;
+    margin: 0;
+    padding: 0;
+    width: 35px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    outline: none;
+    border: 0;
+}
+
+.md-editor .md-controls .md-control {
+    display: block;
+    width: 35px;
+    height: 30px;
+    line-height: 30px;
+    right: 5px;
+    padding: 0
+}
+
+.md-editor .md-controls .md-control:hover {
+    color: #333
+}
+
+.md-editor.md-fullscreen-mode {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    margin-top: 0;
+    left: 0;
+    z-index: 99999;
+    padding: 50px 0 15px;
+    background: #fff!important;
+    border: 0!important
+}
+
+.md-editor.md-fullscreen-mode .md-footer {
+    display: none
+}
+
+.md-editor.md-fullscreen-mode .md-input,.md-editor.md-fullscreen-mode .md-preview {
+    margin: 0 auto!important;
+    height: 100%!important;
+    font-size: 20px!important;
+    padding: 10px!important;
+    color: #999;
+    line-height: 1.6em!important;
+    resize: none!important;
+    box-shadow: none!important;
+    background: #fff!important;
+    border: none !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+    white-space: pre-wrap;
+    word-break: break-all;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.md-editor.md-fullscreen-mode .md-preview {
+    color: #333;
+    overflow: auto
+}
+
+.md-editor.md-fullscreen-mode .md-input:focus,.md-editor.md-fullscreen-mode .md-input:hover {
+    color: #333;
+    background: #fff!important
+}
+
+.md-editor.md-fullscreen-mode .md-header {
+    background: #4a4a4a;
+    text-align: left;
+    position: fixed;
+    width: 100%;
+    top: 0
+}
+
+/* fix */
+.md-editor.md-fullscreen-mode .md-header .md-controls {
+    display: none;
+}
+
+.md-editor.md-fullscreen-mode .btn-group {
+    float: none
+}
+
+/* .md-editor.md-fullscreen-mode .btn {
+    border: 0;
+    background: 0 0;
+    color: #b3b3b3
+} */
+
+.md-editor.md-fullscreen-mode .btn.active,.md-editor.md-fullscreen-mode .btn:active,.md-editor.md-fullscreen-mode .btn:focus,.md-editor.md-fullscreen-mode .btn:hover {
+    box-shadow: none;
+    color: #333
+}
+
+.md-editor.md-fullscreen-mode .md-fullscreen-controls {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    top: 6px;
+    right: 6px;
+
+
+
+    z-index: 1;
+    display: block;
+}
+
+.md-editor.md-fullscreen-mode .md-fullscreen-controls a {
+    color: #b3b3b3;
+    clear: right;
+    display: block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+}
+
+.md-editor.md-fullscreen-mode .md-fullscreen-controls a:hover {
+    color: #fff;
+    text-decoration: none
+}
+
+.md-editor.md-fullscreen-mode .md-editor {
+    height: 100%!important;
+    position: relative
+}
+
+.md-editor .md-fullscreen-controls {
+    display: none
+}
+
+.md-nooverflow {
+    overflow: hidden;
+    position: fixed;
+    width: 100%
+}
+

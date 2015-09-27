@@ -1,0 +1,79 @@
+{% extends "common/site_base.html" %}
+{% load static %}
+{% load customtrans %}
+{% block title %} Missuor | New {% endblock %}
+
+{% block style %}
+<link href="{% static 'plugin/bootstrap/3.3.4/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'plugin/bootstrap/plug-ins/bootstrap-markdown/css/font.css' %}" rel="stylesheet">
+<link href="{% static 'plugin/bootstrap/plug-ins/bootstrap-markdown/css/font-awesome.css' %}" rel="stylesheet">
+
+<link href="{% static 'plugin/bootstrap/plug-ins/bootstrap-markdown/css/missuor-md.css' %}" rel="stylesheet">
+<link href="{% static 'plugin/highlight/css/sunburst.css' %}" rel="stylesheet">
+<link href="{% static 'plugin/bootstrap/plug-ins/bootstrap-tagsinput/css/bootstrap-tagsinput.css' %}" rel="stylesheet">
+<link href="{% static 'plugin/jquery/plug-ins/labelauty/css/jquery-labelauty.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/header.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/footer.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/base.css' %}" rel="stylesheet">
+
+<script src="{% static 'plugin/jquery/1.11.3/jquery.js' %}"></script>
+<script src="{% static 'plugin/jquery/plug-ins/cookie/jquery.cookie.js' %}"></script>
+<script src="{% static 'plugin/jquery/plug-ins/jquery.hotkeys.js' %}"></script>
+<script src="{% static 'plugin/jquery/plug-ins/labelauty/js/jquery-labelauty.js' %}"></script>
+
+<script src="{% static 'plugin/bootstrap/3.3.4/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugin/bootstrap/plug-ins/bootstrap-markdown/js/missuor-md.js' %}"></script>
+<script src="{% static 'plugin/bootstrap/plug-ins/bootstrap-markdown/js/tab.js' %}"></script>
+<script src="{% static 'plugin/bootstrap/plug-ins/bootstrap-tagsinput/js/bootstrap-tagsinput.js' %}"></script>
+
+<link href="{% static 'plugin/bootstrap/plug-ins/bootstrap-fileinput/4.2.0/css/fileinput.css' %}" media="all" rel="stylesheet" type="text/css" />
+<script src="{% static 'plugin/bootstrap/plug-ins/bootstrap-fileinput/4.2.0/js/fileinput.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'common/js/marked.js' %}"></script>
+<script src="{% static 'plugin/highlight/js/highlight.js' %}"></script>
+<script src="{% static 'plugin/highlight/js/config.js' %}"></script>
+
+<link href="{% static 'common/css/imgclipper.css' %}" rel="stylesheet">
+<script src="{% static 'common/js/canvas-to-blob.min.js' %}"></script>
+<script src="{% static 'plugin/jquery/plug-ins/imgclipper.js' %}"></script>
+<script src="{% static 'plugin/bootstrap/plug-ins/bootstrap-markdown/locale/bootstrap-markdown.zh.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<textarea data-provide="markdown" ></textarea>
+
+<script>
+  $("textarea[data-provide='markdown']").markdown({
+    language: 'zh',
+    fullscreen: {
+        enable: true
+    },
+
+    img: {
+      showPanel: true,
+      uploadUrl: '/utils/ajaxUpload/',
+      extradata: {full_path: 'true'}
+    },
+    code: {
+      showPanel: false,
+      //choiceUrl: '/tag/sub/codes/',
+      //uploadUrl: '/blog/code/new/',
+      //choices: ['A','B','C','D', {'k': 'EEE', 'v': 'e'}],
+      //name: 'choice_name',
+      //extradata: {'type': 'type', 'admin': $.cookie('csrftoken')}
+    },
+    cache: {
+      enable: true,
+      key: 'cachekey',
+      greedy: true,
+      session: '{{ form.instance.pk }}',
+      timestamp: '{{ form.instance.update_time|date:"Y-n-d H:i:s" }}'
+    },
+    form: {
+      ajaxSubmit: true,
+
+    }
+  });
+</script>
+{% endblock %}
+
+

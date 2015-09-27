@@ -1,0 +1,45 @@
+html, body, #container {
+  height: 100%;
+  width: 100%;
+}
+#container {
+    margin: 0 auto;
+    padding: 0;
+    width: auto;
+    min-width: 100%;
+    height: auto; 
+    min-height: 100%;
+}
+
+a {
+	/* color: #999; */
+  transition:all 0.4s linear 0s
+}
+a:hover {
+  color: #F60;
+  text-decoration: none;
+}
+
+.clear {
+  clear: both;
+}
+
+
+.stat a {
+    color: rgba(41, 46, 53, 0.6);
+}
+
+
+.stat {
+    padding: 20px;
+    font-size: 14px;
+    color: #999;
+}
+
+.stat span {
+    margin-right: 20px;
+}
+
+.stat span i {
+    margin-right: 8px;
+}

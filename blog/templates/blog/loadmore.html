@@ -1,0 +1,57 @@
+{% load customtrans %}
+{% for o in records %}
+<section class="blog-container clearfix">
+  <div class="timeline-box">
+    <div class="timeline">
+      <div class="category">
+        <a href="#" class="avatar-circle">
+        <img src="{{ o.cover|stringformat:'s!avatar'|u }}" />
+        </a>
+        <!-- <i class="glyphicon glyphicon-picture"></i> -->
+      </div>
+      <div class="time">
+        {{ o.create_time|date:"Nj日" }}
+      </div>
+      <div class="author">
+        <a href="#">{{ o.owner|default_if_none:'Someone' }}</a>
+      </div>
+    </div>
+  </div>
+  <div class="blog-box">
+    <div class="blog-detail">
+      <div class="title">
+        <a href="{% url 'blog:detail' o.url %}">{{ o.title }}</a>
+      </div>
+      <div class="cover">
+        <img src="{{ o.cover|stringformat:'s!cover'|u }}" />
+      </div>
+      <div class="content mui-ellipsis-3">
+        {{ o.excerpt }}
+      </div>
+      <div class="stat">
+        <span>
+          <a href="{% url 'blog:detail' o.url %}">
+            <i class="glyphicon glyphicon-eye-open"></i>
+            {{ o.get_read_num }}
+          </a>
+        </span>
+        <span>
+          <a href="{% url 'blog:detail' o.url %}#comments">
+            <i class="glyphicon glyphicon-comment"></i>
+            {{ o.get_comment_num }}
+          </a>
+        </span>
+        {% if user == o.owner %}
+        <span>
+          <a href="{% url 'blog:edit' o.pk %}">
+            <i class="glyphicon glyphicon-edit"></i>
+
+          </a>
+        </span>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</section>
+{% endfor %}

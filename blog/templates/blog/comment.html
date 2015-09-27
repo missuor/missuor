@@ -1,0 +1,149 @@
+{% load customtrans %}
+
+<div class="comment-form">
+  <form action="{% url 'blog:addcomment' o.pk %}" method="post">
+    <div class="form-group hidden">
+      {% csrf_token %}
+      {% if request.user.is_authenticated %}
+      <input type="hidden" class="hidden" name="owner" value="{{ request.user.pk }}"/>
+      {% endif %}
+      <input type="hidden" class="hidden" name="article" value="{{ o.pk }}"/>
+      <input type="hidden" class="hidden" name="ip" value="{{ request.ip }}"/>
+      <input type="hidden" class="hidden" name="to" value="{{ c.user }}"/>
+      <input type="hidden" class="hidden" name="redirect" value="{{ request.path }}#comments"/>
+    </div>
+
+    <div class="form-group">
+      <textarea class="form-control no-resize" name="content" rows="3"
+          maxlength="512" placeholder="说点什么"></textarea>
+    </div>
+    <input class="btn btn-default" type="submit" value="提交评论"/>
+  </form>
+</div>
+{% if o.replies.exists %}
+
+<div class="blog-comments">
+  {% for c in o.replies %}
+  <div class="blog-comment">
+    <div class="comment-info">
+      <div id="comment-{{c.pk}}" class="comment-title">
+        <span class="floor">
+          <b id="floor-{{ forloop.counter }}"># {{ forloop.counter }}　</b>
+        </span>
+        <span>
+          {% if c.owner %}
+          <i class="glyphicon glyphicon-user"></i>
+          {% else %}
+          <i class="glyphicon glyphicon-map-marker"></i>
+          {% endif %}
+          {{ c.user }}
+          　<i class="glyphicon glyphicon-time"></i>
+          {{ c.time }}
+        </span>
+        <span class="reply pull-right">
+          <a href="javascript:setForm('{{ c.pk }}', '{{ c.pk }}', '{{c.user}}')"> 回复 </a>
+        </span>
+      </div>
+      <div class="comment-body">
+        <p class="pre">{{ c.content }}</p>
+      </div>
+
+      <!-- 子回复 -->
+      {% for cc in c.replies %}
+      <div id="comment-{{cc.pk}}" class="sub-comment">
+        <a class="avatar">
+          <img class="grey-filter" src="https://blog.coding.net/images/fruit_avatar/Fruit-7.png"></img>
+        </a>
+        <div class="detail">
+          <ul>
+            <li>
+              <i>@{{ cc.replyto }}</i>
+              {{ cc.content }}
+            </li>
+            <li class="opt text-muted">
+              {% if cc.owner %}
+              <i class="glyphicon glyphicon-user"></i>
+              {% else %}
+              <i class="glyphicon glyphicon-map-marker"></i>
+              {% endif %}
+              {{ cc.user }}
+              　<i class="glyphicon glyphicon-time"></i>
+              {{ cc.time }}
+              　<a class="reply hidden" href="javascript:setForm('{{ c.pk }}', '{{ c.pk }}', '{{cc.user}}')">
+              <i class="glyphicon glyphicon-edit"></i> 回复 </a>
+              {% if cc.owner == request.user or o.owner == request.user %}
+                <a class="hidden" href="javascript:delComment({{cc.pk}})"><i class="glyphicon glyphicon-trash"></i> 删除</a>
+              {% endif %}
+            </li>
+          </ul>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="sub-comment-form">
+        <form id="sub-comment-form-{{ c.pk }}" class="form hidden" action="{% url 'blog:addcomment' o.pk %}" method="post">
+          <div class="form-group hidden">
+            {% csrf_token %}
+            {% if request.user.is_authenticated %}
+            <input type="hidden" class="hidden" name="owner" value="{{ request.user.pk }}"/>
+            {% endif %}
+            <input type="hidden" class="hidden" name="ip" value="{{ request.ip }}"/>
+            <input type="hidden" class="hidden" name="article" value="{{ o.pk }}"/>
+            <input type="hidden" class="hidden" name="parent" value="{{ c.pk }}"/>
+            <input type="hidden" class="hidden" name="to" value="{{ c.user }}"/>
+            <input type="hidden" class="hidden" name="redirect" value="{{ request.path }}#floor-{{ forloop.counter }}"/>
+          </div>
+
+          <div class="input-group">
+              <input type="text" class="form-control" name="content"
+                placeholder="在此输入评论内容（Ctrl+Enter）">
+              <span class="input-group-addon">
+                <input type="submit" class="form-control">
+              </span>
+          </div>
+        </form>
+      </div>
+    </div>
+    <a class="avatar grey-filter">
+      <img src="https://blog.coding.net/images/fruit_avatar/Fruit-7.png">
+    </a>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<script>
+var setParent = function (pk) {
+  $('input[name="parent"]').val(pk);
+  $('.comment-form textarea').focus();
+};
+
+var setForm = function (id, pk, parent) {
+  $('.sub-comment-form form').addClass('hidden');
+  var form = $('#sub-comment-form-'+id)
+    , val = $('input[name="content"]', form).val();
+  form.removeClass('hidden');
+  $('input[name="parent"]', form).val(pk);
+  $('input[name="to"]', form).val(parent);
+  $('input[name="content"]', form).focus()
+};
+
+var delComment = function (id) {
+  $.ajax({
+      url: "{% url 'blog:deletecomment' %}",
+      type: "get",
+      dataType: "json",
+      data: {'id': id},
+      success: function(data, status){
+        if (data.status=='success' && data.success=='true') {
+          $('#comment-'+id).fadeOut('slow');
+        }
+      }
+  });
+};
+
+$('.detail').mouseover(function () {
+  $('.opt a', $(this)).removeClass('hidden');
+}).mouseout(function () {
+  $('.opt a', $(this)).addClass('hidden');
+})
+</script>

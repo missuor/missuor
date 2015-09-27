@@ -1,0 +1,13 @@
+*~
+*.pyc
+*.pyo
+*.swp
+*.tar.gz
+*.zip
+/upload/*
+.coverage
+.ropeproject/
+.venv
+/logs/*
+/logs
+local_settings.py

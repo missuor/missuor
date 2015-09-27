@@ -1,0 +1,79 @@
+{% extends "author/site_base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}{{ site_name }}{% endblock %}
+
+
+{% block content %}
+<div class="box register-box">
+  <form role="form" action="{% url 'author:register' %}" method="post">
+    <div class="inline-div">
+      <h3 class="text-center"><b> Register </b></h3>
+      {% csrf_token %}
+    </div>
+
+    <div class="input-group inline-div">
+      <span class="input-group-addon"><i class="fa fa-user"></i></span>
+      <input class="form-control" type="text" name="username" placeholder="Username" value="{{ form.username.value|default_if_none:'' }}" autocomplete="off"/>
+    </div>
+    <i class="text-danger">{{ form.username.errors }}</i>
+
+    <div class="input-group inline-div">
+      <span class="input-group-addon"><i class="fa fa-key"></i></span>
+      <input class="form-control" type="password" name="password1" placeholder="Password" value="{{ form.password1.value|default_if_none:'' }}" autocomplete="off"/>
+    </div>
+    <i class="text-danger">{{ form.password1.errors }}</i>
+
+    <div class="input-group inline-div">
+      <span class="input-group-addon"><i class="fa fa-key"></i></span>
+      <input class="form-control" type="password" name="password2" placeholder="Password" value="{{ form.password2.value|default_if_none:'' }}" autocomplete="off"/>
+    </div>
+    <i class="text-danger">{{ form.password2.errors }}</i>
+
+    <div class="inline-div input-group">
+      <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+      <input class="form-control" type="text" name="email" placeholder="Email address" value="{{ form.email.value|default_if_none:'' }}" autocomplete="off"/>
+    </div>
+    <i class="text-danger">{{ form.email.errors }}</i>
+
+    <div>
+      <div class="inline-div">
+        <input class="form-control flip" type="button" value="More"/>
+      </div>
+      <div class="addon-info" style="display: none;">
+        <div class="inline-div input-group">
+          <span class="input-group-addon"><i class="fa fa-qq"></i></span>
+          <input class="form-control" type="text" name="qq" placeholder="QQ number" value="{{ form.qq.value|default_if_none:'' }}" autocomplete="off"/>
+        </div>
+        <i class="text-danger">{{ form.qq.errors }}</i>
+        <div class="inline-div input-group">
+          <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+          <input class="form-control" type="text" name="tel" placeholder="Phone number" value="{{ form.tel.value|default_if_none:'' }}" autocomplete="off"/>
+        </div>
+        <i class="text-danger">{{ form.tel.errors }}</i>
+        <div class="inline-div input-group">
+          <span class="input-group-addon"><i class="fa fa-picture-o"></i></span>
+          <input class="form-control" type="text" name="avatar" placeholder="Avatar" value="{{ form.avatar.value|default_if_none:'' }}" autocomplete="off"/>
+        </div>
+        <i class="text-danger">{{ form.avatar.errors }}</i>
+      </div>
+    </div>
+
+    <div class="inline-div">
+      <div class="btn-group">
+        <input class="btn btn-success" type="submit" value="Submit"/>
+        <a class="btn btn-info" href="{% url 'author:login' %}">Login</a>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".flip").click(function(){
+      $(this).parent().next().fadeToggle(1000);
+      $(this).parent().hide();
+    });
+  });
+</script>
+{% endblock %}

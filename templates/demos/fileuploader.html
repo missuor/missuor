@@ -1,0 +1,28 @@
+{% extends "common/site_base.html" %}
+{% load static %}
+
+{% block title %} Missuor | New {% endblock %}
+
+{% block style %}
+<link href="{% static 'plugin/bootstrap/3.3.4/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/ajaxFileUploader.css' %}" rel="stylesheet">
+<script src="{% static 'plugin/jquery/1.11.3/jquery.js' %}"></script>
+<script src="{% static 'plugin/jquery/plug-ins/cookie/jquery.cookie.js' %}"></script>
+<script src="{% static 'plugin/jquery/plug-ins/ajaxFileUploader.js' %}"></script>
+<script src="{% static 'plugin/bootstrap/3.3.4/js/bootstrap.min.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+<input type="file" data-provide="uploader"/>
+<input id="target" type="text"/>
+<script>
+  $("input[data-provide='uploader']").uploader({
+    file: {
+      url: '/utils/ajaxUpload/',
+      name: 'name'
+    },
+    target: '#target'
+  });
+</script>
+{% endblock %}

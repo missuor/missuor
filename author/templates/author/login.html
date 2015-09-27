@@ -1,0 +1,36 @@
+{% load static %}<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <title>Missuor</title>
+  <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon" />
+  <link rel="stylesheet" href="{% static 'common/css/login.css' %}" />
+</head>
+<body class="missuor bg" lang="zh">
+  <div class="wrapper">
+    <div class="before"></div>
+    <div class="con">
+      <a href="/">
+        <div class="logo" style="background-image: url('http://q.missuor.com/20150916/000851/bcwdaj1we8.png!avatar'); background-size: contain;"></div>
+      </a>
+      <form method="POST">{% csrf_token %}
+        <input name="username" id="username" type="text" autofocus="autofocus" placeholder="邮箱或用户名" class="username" tabindex="1" />
+        
+        <input name="password" id="id_password" placeholder="密码" type="password" class="password" tabindex="2" />
+        <div class="tip">
+          {{ form.username.errors }}
+          {{ form.password.errors }}
+        </div>
+        <input type="submit" class="submit" value="登录" />
+      </form>
+      <div class="signup">
+        没有账号?
+        <a href="{% url 'author:register' %}"> 注册 </a>
+        <a href="{% url 'author:password_reset' %}">忘记密码?</a>
+      </div>
+    </div>
+    <div class="after"></div>
+  </div>
+</body>
+</html>

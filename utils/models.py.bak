@@ -1,0 +1,14 @@
+# coding=utf-8
+from django.db import models
+
+
+class Storage(models.Model):
+    """
+    File Storage System Model Defination
+    """
+    md5 = models.CharField(max_length=40)
+    title = models.CharField(max_length=30, blank=True, null=True)
+    file = models.FileField()
+    ext = models.CharField(max_length=30, blank=True, null=True)
+    time = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey('author.User', blank=True, null=True)

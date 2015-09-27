@@ -1,0 +1,22 @@
+{% extends "common/site_base.html" %}
+{% load static %}
+
+{% block title %} Missuor | New {% endblock %}
+
+{% block style %}
+<link href="{% static 'plugin/bootstrap/3.3.4/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/imgclipper.css' %}" rel="stylesheet">
+<script src="{% static 'common/js/canvas-to-blob.min.js' %}"></script>
+<script src="{% static 'plugin/jquery/1.11.3/jquery.js' %}"></script>
+<script src="{% static 'plugin/jquery/plug-ins/cookie/jquery.cookie.js' %}"></script>
+<script src="{% static 'plugin/jquery/plug-ins/imgclipper.js' %}"></script>
+<script src="{% static 'plugin/bootstrap/3.3.4/js/bootstrap.min.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+<input type="file" data-provide="imgclip"/>
+<script>
+  $("input[data-provide='imgclip']").imgclip({upload: {url: '/utils/ajaxUpload/',name:'img'}});
+</script>
+{% endblock %}

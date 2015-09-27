@@ -1,0 +1,35 @@
+{% extends "blog/site_base.html" %}
+{% load i18n %}
+{% load customtrans %}
+{% load static %}
+{% block title %} 首页 | Missuor {% endblock %}
+
+
+{% block header %}
+  {% include "common/header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div id="content">
+  {% for o in records %}
+  <div class="post-item">
+    <h2 class="post-item-title">
+      <a href="{% url 'blog:detail' o.pk %}">{{ o.title }}</a>
+    </h2>
+
+    <div class="post-item-abstract"><pre>
+      {{ o.content }}
+    </pre>
+    </div>
+
+    {% if o.followers.all %}
+    <ul class="post-item-stars">
+      <li>Like this:</li>
+      {{ o.get_wraped_followers|safe }}
+    </ul>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

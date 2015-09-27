@@ -1,0 +1,111 @@
+.imgclip-panel {
+  position: relative;
+  clear: both;
+  display: inline-block;
+}
+.imgclip-panel input[type="file"]{
+  width: 100%;
+  height: 100%;
+}
+
+.imgclip-layer {
+  background: #ccc;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  -ms-filter: 'alpha(opacity=0.5)';
+  display: block;
+  z-index: 888;
+  cursor: default;
+
+}
+
+.imgclip-select {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px dashed #f00;
+  z-index: 999;
+  cursor: default;
+
+}
+
+.d {
+  position: absolute;
+  border: 1px solid #000;
+  /* border-radius: 12px; */
+  width: 12px;
+  height: 12px;
+  display: block;
+  /* cursor: move; */
+  background: #99cc00;
+  border-color: blue;
+  opacity: 1;
+  -ms-filter: 'alpha(opacity=1)';
+}
+.t {
+  top: 0;
+  margin-top: -6px;
+}
+.b {
+  bottom: 0;
+  margin-bottom: -6px;
+}
+.l {
+  left: 0;
+  margin-left: -6px;
+}
+.r {
+  right: 0;
+  margin-right: -6px;
+}
+.d:hover {
+  background-color: #000;
+}
+
+
+.x {
+  left: 50%;
+  margin-left: -6px;
+}
+.y {
+  top: 50%;
+  margin-top: -6px;
+}
+.imgclip-move {
+  border: 1px solid #33cc33;
+  cursor: move;
+}
+
+.imgclip-output:hover {
+  cursor: pointer;
+} 
+
+.imgclip-dialog {
+  position: relative;
+  display: inline-block;
+}
+.imgclip-cancel-btn {
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  margin-right: 6px;
+  margin-bottom: 5px;
+  opacity: 0.5;
+  -ms-filter: 'alpha(opacity=0.5)';
+}
+.imgclip-submit-btn {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: 6px;
+  margin-bottom: 5px;
+  opacity: 0.5;
+  -ms-filter: 'alpha(opacity=0.5)';
+}
+.imgclip-submit-btn:hover,
+.imgclip-cancel-btn:hover {
+  opacity: 1;
+  -ms-filter: 'alpha(opacity=1)';
+}

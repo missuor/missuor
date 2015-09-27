@@ -1,0 +1,66 @@
+{% extends "common/site_base.html" %}
+{% load static %}
+{% block title %}首页 | {{ o.title }}{% endblock %}
+
+
+{% block style %}
+<link href="{% static 'plugin/bootstrap/3.3.4/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/header.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/footer.css' %}" rel="stylesheet">
+<link href="{% static 'plugin/highlight/css/sunburst.css' %}" rel="stylesheet">
+
+<script src="{% static 'plugin/jquery/1.11.3/jquery.js' %}"></script>
+<script src="{% static 'plugin/bootstrap/3.3.4/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'common/js/marked.js' %}"></script>
+<script src="{% static 'plugin/highlight/highlight.pack.js' %}"></script>
+<script src="{% static 'plugin/highlight/js/config.js' %}"></script>
+{% endblock %}
+
+{% block extrastyle %}
+<style>
+.hljs-class > .hljs-title {
+  font-weight: bold;
+}
+body {
+    background: #fff;
+}
+
+</style>
+{% endblock %}
+
+
+{% block header %}
+  {% include "common/header.html" %}
+{% endblock %}
+
+
+{% block content %}
+<div id="content"s>
+  {% if o %}
+  <div class="post-item-home">
+    <h2 class="post-item-title-home text-center">
+      <a href="{% url 'blog:detail' o.pk %}">{{ o.title }}</a>
+    </h2>
+
+    <div id="post-item-content" class="post-item-content">
+      <pre data-provider="marked-run" class="hidden" style="display: none;">{{ o.content|safe }}</pre>
+    </div>
+  </div>
+  {% else %}
+  <p class="text-center">No Articles</p>
+  {% endif %}
+  <script>
+    $(document).ready(function(){
+      $('pre[data-provider="marked-run"]').each(function (e) {
+        var text = $(this).html(), div = $(this).parent();
+        $(this).remove();
+        div.html(marked(text));
+      });
+    });
+  </script>
+</div>
+{% endblock %}
+
+{% block footer %}
+  {% include "common/footer.html" %}
+{% endblock %}

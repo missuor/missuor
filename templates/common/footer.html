@@ -1,0 +1,51 @@
+<footer id="colophon" class="clearfix">
+    <div id="site-generator">
+        <div class="container clearfix">
+            <div class="social-profiles clearfix">
+                <div class="share">
+                    <div class="wechat" title="点击关注微信公众号">
+                      <img src="https://blog.coding.net/images/wechat.jpg">
+                      <div class="qr_code"><img src="#"></div>
+                    </div>
+                    <div class="weibo" title="点击关注微博">
+                        <a href="#" target="_blank">
+                          <img src="https://blog.coding.net/images/weibo.jpg">
+                        </a>
+                    </div>
+                    <div class="rss" title="点击订阅RSS">
+                        <a href="/blogs/rss" target="_blank">rss
+                            <i class="icomoon-rss"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">Copyright © 2015 <a href="http://missuor.com/">Missuor.com</a>
+            </div>
+        </div>
+    </div>
+    <div class="back-to-top" style="display: none;">
+      <a href="#branding" title="回到顶部">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+      </a>
+    </div>
+</footer>
+<script>
+jQuery(document).ready(function(){
+	jQuery(function () {
+		jQuery(window).scroll(function () {
+			if (jQuery(this).scrollTop() > 500) {
+				jQuery('.back-to-top').fadeIn();
+			} else {
+				jQuery('.back-to-top').fadeOut();
+			}
+		});
+		jQuery('.back-to-top a').click(function () {
+      jQuery('nav.header').fadeIn();
+			jQuery('body,html,header').animate({
+				scrollTop: 0
+			}, 800);
+			return false;
+		});
+	});
+});
+</script>

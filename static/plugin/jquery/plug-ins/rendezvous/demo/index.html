@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery日历插件RendezVous.js - 站长素材</title>
+		<link rel="stylesheet" href="css/syntaxhighlighter/shCore.css">
+		<link rel="stylesheet" href="css/syntaxhighlighter/shThemeDefault.css">
+		<link rel="stylesheet" href="css/rendezvous.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<h1 class="text-center">RendezVous.js</h1>
+		<h2 class="text-center">Keep calm and Pick a date !</h2>
+		<div class="datepicker-demo-block">
+			<h3>Simple</h3>
+
+			<h4>Render</h4>
+			<div rendezvous></div>
+
+			<h4>HTML</h4>
+			<pre class="brush: xml">
+				&lt;div rendezvous&gt;&lt;/div&gt;
+			</pre>
+
+			<h4>JavaScript</h4>
+			<pre class="brush: js">
+				// void
+			</pre>
+
+			<h4>Css</h4>
+			<pre class="brush: css">
+				/* void */
+			</pre>
+		</div>
+
+		<div class="datepicker-demo-block">
+			<h3>Configurable</h3>
+
+			<h4>Render</h4>
+			<div id="rendez-vous"></div>
+
+			<h4>HTML</h4>
+			<pre class="brush: xml">
+				&lt;div id="rendez-vous"&gt;&lt;/div&gt;
+			</pre>
+
+			<h4>JavaScript</h4>
+			<pre class="brush: js">
+				var settings = { /* ... */ };
+				var callback = function(rdv) { /* ... */ };
+
+				$('#rendez-vous').RendezVous(settings, callback);
+			</pre>
+
+			<h4>Css</h4>
+			<pre class="brush: css">
+				/* void */
+			</pre>
+		</div>
+
+		<div class="datepicker-demo-block">
+			<h3>Default date</h3>
+
+			<h4>Render</h4>
+			<div id="rendez-vous-date"></div>
+
+			<h4>HTML</h4>
+			<pre class="brush: xml">
+				&lt;div id="rendez-vous"&gt;&lt;/div&gt;
+			</pre>
+
+			<h4>JavaScript</h4>
+			<pre class="brush: js">
+				$('#rendez-vous').RendezVous({
+					inputEmptyByDefault: false,
+					defaultDate: {
+						day: 1,    // 1 through 31
+						month: 1,  // 0 through 11
+						year: 2011 // No limits
+					}
+				});
+			</pre>
+
+			<h4>Css</h4>
+			<pre class="brush: css">
+				/* void */
+			</pre>
+		</div>
+
+		<div class="datepicker-demo-block">
+			<h3>Custom language <small>(Chinese)</small></h3>
+
+			<h4>Render</h4>
+			<div id="rendez-vous-french"></div>
+
+			<h4>HTML</h4>
+			<pre class="brush: xml">
+				&lt;div id="rendez-vous"&gt;&lt;/div&gt;
+			</pre>
+
+			<h4>JavaScript</h4>
+			<pre class="brush: js">
+                $('#rendez-vous-french').RendezVous({
+                    i18n: {
+                        calendar: {
+                            month: {
+                                previous: '上一月',
+                                next:     '下一月',
+                                up:       '选择月份'
+                            },
+                            year: {
+                                previous: '上一年',
+                                next:     '下一年',
+                                up:       '选择年份'
+                            },
+                            decade: {
+                                previous: '上十年',
+                                next:     '下十年',
+                                up:       '选择日期'
+                            }
+                        },
+                        days: {
+                            abbreviation: {
+                                monday:    '一',
+                                tuesday:   '二',
+                                wednesday: '三',
+                                thursday:  '四',
+                                friday:    '五',
+                                saturday:  '六',
+                                sunday:    '日'
+                            },
+                            entire: {
+                                monday:    '星期一',
+                                tuesday:   '星期二',
+                                wednesday: '星期三',
+                                thursday:  '星期四',
+                                friday:    '星期五',
+                                saturday:  '星期六',
+                                sunday:    '星期日'
+                            }
+                        },
+                        months: {
+                            abbreviation:
+                            {
+                                january:   '一月',
+                                february:  '二月',
+                                march:     '三月',
+                                april:     '四月',
+                                may:       '五月',
+                                june:      '六月',
+                                july:      '七月',
+                                august:    '八月',
+                                september: '九月',
+                                october:   '十月',
+                                november:  '十一月',
+                                december:  '十二月'
+                            },
+                            entire: {
+                                january:   '一月',
+                                february:  '二月',
+                                march:     '三月',
+                                april:     '四月',
+                                may:       '五月',
+                                june:      '六月',
+                                july:      '七月',
+                                august:    '八月',
+                                september: '九月',
+                                october:   '十月',
+                                november:  '十一月',
+                                december:  '十二月'
+                            }
+                        }
+                    }
+                });
+			</pre>
+
+			<h4>Css</h4>
+			<pre class="brush: css">
+				/* void */
+			</pre>
+		</div>
+
+		<div class="datepicker-demo-block">
+			<h3>Fullscreen opening</h3>
+
+			<h4>Render</h4>
+			<div id="rendez-vous-fullscreen"></div>
+
+			<h4>HTML</h4>
+			<pre class="brush: xml">
+				&lt;div id="rendez-vous"&gt;&lt;/div&gt;
+			</pre>
+
+			<h4>JavaScript</h4>
+			<pre class="brush: js">
+				$('#rendez-vous').RendezVous();
+			</pre>
+
+			<h4>Css</h4>
+			<pre class="brush: css">
+				#rendez-vous .rendezvous-popup {
+					position: fixed;
+					left: 0;
+					right: 0;
+					top: 0;
+					bottom: 0;
+					background-color: rgba(30, 30, 30, 0.4);
+				}
+				#rendez-vous .rendezvous-datepicker {
+					position: absolute;
+					left: 50%;
+					top: 50%;
+					width: 21em;
+					font-size: 1.3em;
+					margin-left: -11em;
+					margin-top: -8em;
+				}
+			</pre>
+		</div>
+
+		<div class="datepicker-demo-block">
+			<h3>Custom date format <small>(e.g. "Thursday 1 January 2015")</small></h3>
+
+			<h4>Render</h4>
+			<div id="rendez-vous-format"></div>
+
+			<h4>HTML</h4>
+			<pre class="brush: xml">
+				&lt;div id="rendez-vous"&gt;&lt;/div&gt;
+			</pre>
+
+			<h4>JavaScript</h4>
+			<pre class="brush: js">
+				$('#rendez-vous').RendezVous({
+					formats: {
+						display: {
+							date: '%Day %d %Month %Y'
+						}
+					}
+				});
+			</pre>
+
+			<h4>Css</h4>
+			<pre class="brush: css">
+				#rendez-vous .rendezvous-input input {
+					width: 180px; /* to fit the result in the input */
+				}
+			</pre>
+		</div>
+
+		<div class="datepicker-demo-block">
+			<h3>Input split</h3>
+
+			<h4>Render</h4>
+			<div id="rendez-vous-split"></div>
+
+			<h4>HTML</h4>
+			<pre class="brush: xml">
+				&lt;div id="rendez-vous"&gt;&lt;/div&gt;
+			</pre>
+
+			<h4>JavaScript</h4>
+			<pre class="brush: js">
+				$('#rendez-vous').RendezVous({
+					splitInput: true,
+				});
+			</pre>
+
+			<h4>Css</h4>
+			<pre class="brush: css">
+				#rendez-vous .rendezvous-input input {
+					width: 60px; /* to fit the result in the inputs */
+				}
+			</pre>
+		</div>
+
+		<div class="datepicker-demo-block">
+			<h3>Catch events</h3>
+
+			<h4>Render</h4>
+			<div id="rendez-vous-events"></div>
+
+			<h4>HTML</h4>
+			<pre class="brush: xml">
+				&lt;div id="rendez-vous"&gt;&lt;/div&gt;
+			</pre>
+
+			<h4>JavaScript</h4>
+			<pre class="brush: js">
+				$('#rendez-vous')
+					.on('rendezvous-init', function(event, rdv) {
+						console.log('rdv-init');
+					})
+					.on('rendezvous-open', function(event, rdv) {
+						console.log('rdv-open');
+					})
+					.on('rendezvous-close', function(event, rdv) {
+						console.log('rdv-close');
+					})
+					.on('rendezvous-change', function(event, rdv) {
+						console.log('rdv-change');
+					})
+					.RendezVous();
+			</pre>
+
+			<h4>Css</h4>
+			<pre class="brush: css">
+				/* void */
+			</pre>
+		</div>
+
+		<div class="datepicker-demo-block">
+			<h3>Always open</h3>
+
+			<h4>Render</h4>
+			<div id="rendez-vous-open"></div>
+
+			<h4>HTML</h4>
+			<pre class="brush: xml">
+				&lt;div id="rendez-vous"&gt;&lt;/div&gt;
+			</pre>
+
+			<h4>JavaScript</h4>
+			<pre class="brush: js">
+				$('#rendez-vous').RendezVous({
+						canClose: false,
+						openByDefault: true
+					}
+				);
+			</pre>
+
+			<h4>Css</h4>
+			<pre class="brush: css">
+				#rendez-vous .rendezvous-popup {
+					position: inherit;
+				}
+			</pre>
+		</div>
+
+		<script src="js/jquery.js"></script>
+		<script src="js/syntaxhighlighter/shCore.js"></script>
+		<script src="js/syntaxhighlighter/shBrushJScript.js"></script>
+		<script src="js/syntaxhighlighter/shBrushXml.js"></script>
+		<script src="js/syntaxhighlighter/shBrushCss.js"></script>
+		<script src="js/rendezvous.js"></script>
+		<script src="js/app.js"></script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+</body>
+</html>

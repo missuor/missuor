@@ -1,0 +1,98 @@
+{% extends "common/site_base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %} 首页 | Missuor {% endblock %}
+
+{% block style %}
+<link href="{% static 'plugin/bootstrap/3.3.4/css/bootstrap.min.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/header.css' %}" rel="stylesheet">
+<link href="{% static 'common/css/footer.css' %}" rel="stylesheet">
+<link href="{% static 'blog/css/style.css' %}" rel="stylesheet">
+<script src="{% static 'plugin/jquery/1.11.3/jquery.js' %}"></script>
+<script src="{% static 'plugin/bootstrap/3.3.4/js/bootstrap.min.js' %}"></script>
+{% endblock %}
+
+
+
+{% block header %}
+  {% include "common/header.html" %}
+{% endblock %}
+
+{% block content %}
+<div id="main">
+<div id="content" class="container clearfix">
+<div id="blogs-container">
+  {% if records %}
+  <div id="only-title" class="only-title" onclick="setOnlyTitle()">
+    <div>
+      <div class="triangle"></div>
+      <i class="glyphicon glyphicon-list"></i>
+    </div>
+  </div>
+  {% for o in records %}
+  <section class="blog-container clearfix">
+    <div class="timeline-box">
+      <div class="timeline">
+        <div class="category">
+          <i class="glyphicon glyphicon-picture"></i>
+        </div>
+        
+        <!-- <div class="time">
+          {{ o.create_time|date:"Nj日" }}
+        </div>
+        <div class="author">
+          <a href="#">{{ o.owner|default_if_none:'Someone' }}</a>
+        </div> -->
+      </div>
+    </div>
+    <div class="blog-box">
+      <div class="blog-detail">
+        <div class="title">
+          <a href="{% url 'blog:edit' o.pk %}">{{ o.title }}</a>
+        </div>
+        <!-- <div class="cover">
+          <img src="https://dn-coding-net-production-pp.qbox.me/052eeb07-5595-48e1-920c-a5db64fd3a44.jpg" />
+        </div> -->
+        <div class="content mui-ellipsis-3">
+          {{ o.content|truncatechars:512 }}
+        </div>
+        <div class="stat">
+          <span>{{ o.create_time|date:"Y-n-d G:i:s" }}</span>
+          <span class="pull-right"><a href="{% url 'blog:edit' o.pk %}"><i class="glyphicon glyphicon-edit"></i>编辑</a></span>
+          <span class="pull-right"><a href="{% url 'blog:delete' o.pk %}?redirect={% url 'blog:drafts' %}"><i class="glyphicon glyphicon-trash"></i>删除</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endfor %}
+  <section class="load-more-container clearfix">
+    <div class="load-more load-more-animate" onclick="loadMore()">
+        More
+    </div>
+  </section>
+  {% else%}
+  <div class="only-title" style="color:#cfdbe4;">
+    <div class="glyphicon glyphicon-flag"></div>
+    <!-- <div>
+      <div class="triangle"></div>
+      <i class="glyphicon glyphicon-list"></i>
+    </div> -->
+  </div>
+  <section class="blog-container clearfix"></section>
+  <section class="blog-container clearfix"></section>
+  <section class="load-more-container">
+    <a  class="load-more load-more-animate" href="{% url 'blog:add' %}">New</a>
+  </section>
+  {% endif %}
+</div>
+</div>
+</div>
+{% endblock %}
+
+{% block outter %}
+  {#% include "blog/paginator.html" %#}
+{% endblock %}
+
+{% block footer %}
+  {% include "common/footer.html" %}
+{% endblock %}

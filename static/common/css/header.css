@@ -1,0 +1,89 @@
+@charset "utf-8";
+
+/* Header */
+.header {
+    /* background: #403D39; */
+    background: #fff;
+    color: red;
+    /* box-shadow: 0 0 7px 0 #6b6b6b;
+    -webkit-box-shadow: 0 0 10px 0 #6b6b6b;
+    -moz-box-shadow: 0 0 7px 0 #6b6b6b; */
+}
+.nav-holder {
+  display: block;
+  margin-bottom: 5px;
+
+}
+.navbar-default .navbar-nav>li>a {
+    display: block;
+    font-family: '微软雅黑';
+    float: left;
+    font-size: 1.2em;
+    text-align: center;
+    color: #fff;
+    transition-duration: 0.5s;
+}
+.navbar-default .navbar-nav>li>a:link,
+.navbar-default .navbar-nav>li>a:visited,
+.navbar-default .navbar-nav>li>a:active {
+    color: #000;
+    /* font-weight: 800; */
+}
+.navbar-default .navbar-nav>li>a:hover {
+    color: #66cc99;
+    text-decoration: none;
+}
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover {
+  color: #555;
+  /* background-color: #403D39; */
+}
+.dropdown-menu {
+  min-width: 7em;
+}
+.navbar-default .navbar-brand {
+  color: #777;
+}
+
+.navbar-form-holder {
+  margin-right: 15px!important;
+}
+
+.navbar-form-holder input.form-control {
+  border: 1px solid #ccc;
+  border-radius: 17px;
+}
+
+.navbar-form-holder input.form-control:focus {
+  border: 1px solid #36c;
+}
+.header .navbar-header {
+  margin-right: 20px;
+}
+.navbar-right {
+  float: right!important;
+  margin-right: 15px;
+}
+
+
+.icon_attach {
+  transform:rotate(135deg);
+  -ms-transform:rotate(135deg); 	/* IE 9 */
+  -moz-transform:rotate(135deg); 	/* Firefox */
+  -webkit-transform:rotate(135deg); /* Safari 和 Chrome */
+  -o-transform:rotate(135deg);
+}
+
+.entryname-holder {
+  padding: 20px 10px 20px;
+  border: 1px solid #eee;
+}
+.field-title-holder {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.btn {
+  font-size: 16px;
+}
