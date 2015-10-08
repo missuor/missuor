@@ -1,5 +1,5 @@
 # missuor
-wooow [http://www.missuor.com](missuor.com)
+wooow [missuor.com](http://www.missuor.com)
 ===
 
 个人博客的一点点源码.
