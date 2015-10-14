@@ -8,7 +8,7 @@ from multiprocessing import Pool
 
 conn = MySQLdb.connect(
     user='root',
-    passwd='oseasydads_db',
+    passwd='pwd',
     host='10.10.10.197',
     port=3100,
     charset='utf8'
