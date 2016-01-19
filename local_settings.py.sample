@@ -2,69 +2,39 @@
 
 import os, sys, shutil
 
-if 'BAE_ENV_APPID' in os.environ:
-    # BAE
+DEBUG = True
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+for app in ('author', 'blog', 'utils'):
+    path = os.path.join(BASE_DIR, 'static', app)
+    try:
+        shutil.rmtree(path)
+    except:
+        pass
+        
+if 'collectstatic' in sys.argv:
     DEBUG = False
-    DATABASE_NAME = 'xxxx'
-    DATABASE_HOST = 'sqld.duapp.com'
-    DATABASE_PORT = '4050'
-    DATABASE_USER = 'xxx'
-    DATABASE_PASS = 'xxx'
 
-elif 'SERVER_SOFTWARE' in os.environ:
-    # SAE
-    DEBUG = False
-    DATABASE_NAME = 'xxx'
-    DATABASE_HOST = 'w.rdc.sae.sina.com.cn'
-    DATABASE_PORT = '3307'
-    DATABASE_USER = 'xxx'
-    DATABASE_PASS = 'xxx'
+    DATABASE_NAME = 'missuor'
+    DATABASE_HOST = '10.10.10.197'
+    DATABASE_PORT = '3100'
+    DATABASE_USER = 'root'
+    DATABASE_PASS = 'oseasydads_db'
 
-else:
-    DEBUG = True
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    for app in ('author', 'blog', 'utils'):
-        path = os.path.join(BASE_DIR, 'static', app)
-        try:
-            shutil.rmtree(path)
-        except:
-            pass
-    if 'collectstatic' in sys.argv:
-        DEBUG = False
-
-    # Work
-    if 'TAG' in os.environ:
-        print 'work'
-        DATABASE_NAME = 'missuor'
-        DATABASE_HOST = '10.10.10.197'
-        DATABASE_PORT = '3100'
-        DATABASE_USER = 'root'
-        DATABASE_PASS = 'oseasydads_db'
-    # Think
-    elif 'WORKON_HOME' in os.environ:
-        print 'think'
-        DATABASE_NAME = 'missuor'
-        DATABASE_HOST = '127.0.0.1'
-        DATABASE_PORT = '3306'
-        DATABASE_USER = 'root'
-        DATABASE_PASS = 'mysql'
-    else:
-        print 'fuck'
 
 
 def _get_cache():
     CACHES = None
     if 'BAE_ENV_APPID' in os.environ:
-        db_name = "PoMHzDOECwbgKILtuXfy" #数据库名称
-        api_key = "7rvpZkdXQVmVofTb9MvugxfQ" # 用户AK
-        secret_key = "xLSTPpkG0cHCCvI10dGD8PNWXRQj7it7" #用户SK
+        db_name = "xxx" #数据库名称
+        api_key = "xxx" # 用户AK
+        secret_key = "xxx" #用户SK
         password = "%s-%s-%s"%(api_key, secret_key, db_name)
 
         CACHES = {
             "default": {
                 "BACKEND": "django_redis.cache.RedisCache",
                 # "LOCATION": "redis.duapp.com:80",
-                "LOCATION": 'redis://[:%s]@redis.duapp.com:80/PoMHzDOECwbgKILtuXfy' % password,
+                "LOCATION": 'redis://[:%s]@redis.duapp.com:80/xxxxx' % password,
                 "OPTIONS": {
                     "CLIENT_CLASS": "django_redis.client.DefaultClient",
                     'PASSWORD': password,
