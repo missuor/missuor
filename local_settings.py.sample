@@ -14,35 +14,11 @@ for app in ('author', 'blog', 'utils'):
 if 'collectstatic' in sys.argv:
     DEBUG = False
 
-    DATABASE_NAME = 'missuor'
-    DATABASE_HOST = '10.10.10.197'
-    DATABASE_PORT = '3100'
-    DATABASE_USER = 'root'
-    DATABASE_PASS = 'oseasydads_db'
-
-
-
-def _get_cache():
-    CACHES = None
-    if 'BAE_ENV_APPID' in os.environ:
-        db_name = "xxx" #数据库名称
-        api_key = "xxx" # 用户AK
-        secret_key = "xxx" #用户SK
-        password = "%s-%s-%s"%(api_key, secret_key, db_name)
-
-        CACHES = {
-            "default": {
-                "BACKEND": "django_redis.cache.RedisCache",
-                # "LOCATION": "redis.duapp.com:80",
-                "LOCATION": 'redis://[:%s]@redis.duapp.com:80/xxxxx' % password,
-                "OPTIONS": {
-                    "CLIENT_CLASS": "django_redis.client.DefaultClient",
-                    'PASSWORD': password,
-                }
-            }
-        }
-
-    return CACHES
+DATABASE_NAME = 'missuor'
+DATABASE_HOST = '127.0.0.1'
+DATABASE_PORT = '3306'
+DATABASE_USER = 'root'
+DATABASE_PASS = ''
 
 CACHES = _get_cache()
 
